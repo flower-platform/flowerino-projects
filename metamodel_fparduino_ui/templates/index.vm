@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://bootswatch.com/paper/bootstrap.min.css">
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<script>
+#if( !$url )
+#set( $root = $NodeTemplateUtils.getParent($node.nodeUri) )
+#set( $httpServer = $NodeTemplateUtils.navigateByType($root.nodeUri, ["board", "HttpServer"]) )
+#set( $url = "http://${httpServer.getPropertyValue('ipAddress')}:${httpServer.getPropertyValue('port')}/" )
+#end
+var url = "$url";
+
+#jslib()
+</script>
+
+<style>
+.content {
+	font-size: 21px;
+	font-weight: 300;
+	line-height: 1.4;
+}
+</style>
+</head>
+
+<body class="content">
+<br/>
+<div class="container-fluid">
+#foreach( $child in $NodeTemplateUtils.getChildren($node.nodeUri) )
+#@indent()
+	#callMacroWithSuffix( $child, "")
+#end
+#end
+
+	<div class="row"><div class="col-md-12"><span class="label label-default"><span class="glyphicon glyphicon-dashboard"></span> Free memory (SRAM): <span bindToProperty="FREE_MEM"></span> bytes</span></div></div>
+</div>
+</body>

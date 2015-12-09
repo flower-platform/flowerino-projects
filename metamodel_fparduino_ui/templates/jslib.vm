@@ -1,0 +1,114 @@
+#macro( jslib )
+var bindingManager = {
+	
+	data : {},
+	
+	// Listeners map
+	listeners : {},
+	
+	activeRequests: 0, // number of active AJAX request; when non-zero, periodic AJAX call for getting the system's state is disabled
+
+	// Register a listener
+	addListener : function(property, elt, handler, options) {
+		var list = this.listeners[property];
+		if (typeof list === "undefined") {
+			// init
+			list = [];
+			this.listeners[property] = list;
+		}
+		var listener = function() {
+			var propertyValue = bindingManager.data[property];
+			handler(elt, propertyValue, options);
+		}
+		list.push(listener);
+		listener();
+	},
+
+	// Set the value and notify listeners
+	set : function(property, value) {
+		if (this.data[property] !== value) {
+			// only if different value
+			this.data[property] = value;
+
+			var list = this.listeners[property];
+			if (typeof list !== "undefined" && list !== null) {
+				// notify listeners
+				for (var i = 0; i < list.length; i++) {
+					list[i]();
+				}
+			}
+		}
+	}
+
+};
+
+var toggleClass = function(elt, propertyValue, options) {
+	for (var key in options) {
+		var cls = options[key];
+		if (key != propertyValue) {
+			elt.parent().removeClass(cls);
+		}
+	}
+	if (options[propertyValue]) {
+		elt.parent().addClass(options[propertyValue]);
+	}
+	
+}
+
+var setText = function(elt, propertyValue, options) {
+	if (typeof options !== "undefined" && options[propertyValue]) {
+		propertyValue = options[propertyValue];
+	}
+	elt.text(propertyValue);
+}
+
+var invoke = function(path, successHandler, errorHandler) {
+	bindingManager.activeRequests++;
+	$.ajax({
+		url: url + path, 
+		success: function(data) {
+			bindingManager.activeRequests--;
+			for (var key in data) {
+				bindingManager.set(key, data[key]);
+			};
+			if (successHandler) {
+				successHandler();
+			}
+		},
+		error: function() {
+			bindingManager.activeRequests--;
+			if (errorHandler) {
+				errorHandler();
+			}
+		},
+		timeout: 10000
+	});
+};
+
+$(function() {
+	$("[bindToProperty]").each(function() {
+		var elt = $(this);
+		var property = elt.attr("bindToProperty");
+		var textToggler = elt.attr("textToggler");
+		if (textToggler) {
+			textToggler = JSON.parse(textToggler);
+		}
+		bindingManager.addListener(property, elt, setText, textToggler);
+
+		var classToggler = elt.attr("classToggler");
+		if (classToggler) {
+			classToggler = JSON.parse(classToggler);
+			bindingManager.addListener(property, elt, toggleClass, classToggler);
+		}
+
+	});
+
+	setInterval(function() {
+		if (bindingManager.activeRequests > 0) {
+			return;
+		}
+		invoke("getState");
+	}, 1000);
+	
+});
+#end

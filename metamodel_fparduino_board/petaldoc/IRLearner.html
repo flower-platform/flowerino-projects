@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://bootswatch.com/paper/bootstrap.min.css">
+<link rel="stylesheet" href="petaldoc.css">
+</head><html><body><div class="main">
+<h4><span class="label label-success"><img src="../images/Input.png"/></span> IRLearner</h4>
+<hr/>
+<p style="margin-bottom: 10px">
+Jump to: <a href="#properties" class="btn btn-warning btn-xs">Properties</a> 
+<a href="#methods" class="btn btn-primary btn-xs">Operations</a> <a href="#events" class="btn btn-info btn-xs">Events</a>
+</p>
+<p>Used for capturing IR commands from theoretically any infrared remote control available on the market and storing them on the SD card, under the <code>/ir-commands</code> folder.<br>Makes use of an IR receiver, which must be connected to one of the pins within <code>0..7</code> range.<br/>An associated <code>IRLearnButton</code> on the UI is needed in order to use this petal.</p>
+
+<!-- Properties -->
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h5 id="properties" class="panel-title">Properties</h5>
+  </div>
+  <div class="panel-body">
+<h5>name:String </h5>
+<b>Mandatory</b>. <i>E.g.: <code>myNewObject</code></i>.<br> The name of the object, which needs to be a valid C++ identifier.
+<h5>pin:Number </h5>
+<b>Mandatory</b>. <i>E.g. <code>3</code> or <code>A3</code></i>.<br>The pin of the input. When choosing pins, please see the remark above (about occupied pins). 
+</div></div>
+
+<!-- Methods -->
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h5 id="methods" class="panel-title">Operations</h5>
+  </div>
+  <div class="panel-body">
+<h5 id="capture_name_">capture(name)</h5>
+Captures IR command and saves it to SD card, under the <code>/ir-commands</code> folder. The <code>name</code> argument is used as the file name. 
+</div></div>
+
+<!-- Events -->
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h5 id="events" class="panel-title">Events</h5>
+  </div>
+  <div class="panel-body">
+None.</div></div>
+
+</div></body></html>
