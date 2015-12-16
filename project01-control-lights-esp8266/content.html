@@ -1,0 +1,114 @@
+<h3>0. Intro</h3>
+<div class="panel-group">
+	This program uses an Arduino + the ESP8266 board as a WiFi
+	communication device. The Arduino uses the
+	<code>HttpServer</code>
+	component in order to provide an HTML user interface. The user
+	interface controls 2 relays. Additionally, these 2 relays are also
+	commanded by 2 push buttons. When pushing them, the ON/OFF status is
+	updated in the HTML interface.
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="thumbnail">
+			<div class="embed-responsive embed-responsive-16by9">
+				<iframe class="embed-responsive-item"
+					src="https://www.youtube.com/embed/qr06Sa0XikE?rel=0"
+					frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h3>1. Hardware Used</h3>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="thumbnail">
+			<img
+				src="servlet/load/flowerino/project01-control-lights-esp8266/images/hardware-used.jpg">
+			<div class="caption">
+				<div class="panel-group">
+					<div>
+						<ul>
+							<li>Arduino Micro;</li>
+							<li>ESP8266 Board (ESP-201 variant);</li>
+							<li>Relay Board;</li>
+							<li>2 x Push Buttons (brick);</li>
+							<li>2 x 3.3KOhm Resistors;</li>
+							<li>Breadboard;</li>
+							<li>Extension Headers (to attach the ESP8266 board to the
+								breadboard).</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h3>2. Firmware of the ESP8266</h3>
+
+The ESP8266 is a versatile SoC (System on Chip). It can have different
+variants of firmware, and it can even be programmed from the Arduino
+IDE, just like an Arduino. In our case we need the AT Commands firmware.
+<ul>
+	<li><a href="http://flower-platform.com/2015/12/16/esp8266-with-at-commands-flashingupdating-the-firmware-step-by-step/" target="_blank">This article</a> contains
+		detailed information about how to flash the AT Commands firmware to
+		your ESP8266.</li>
+	<li>And <a href="http://flower-platform.com/2015/12/16/esp8266-with-at-commands-connect-from-pc-with-putty/" target="_blank">this article</a>
+		explains how to check to see if you have the latest AT Commands
+		firmware installed.
+	</li>
+</ul>
+
+<h3>3. Wiring</h3>
+<div class="row">
+	<div class="col-md-12">
+		<div class="thumbnail">
+			<img
+				src="servlet/load/flowerino/project01-control-lights-esp8266/images/fritzing-control-lights-esp8266_bb.png">
+		</div>
+	</div>
+</div>
+
+<h3>4. Images</h3>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="thumbnail">
+			<img
+				src="servlet/load/flowerino/project01-control-lights-esp8266/images/phone-circuit.jpg">
+			<div class="caption">
+				<div class="panel-group">
+					<div>Overview of the circuit and the web user interface (in the web browser of a phone).</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="thumbnail">
+			<img
+				src="servlet/load/flowerino/project01-control-lights-esp8266/images/circuit-closeup.jpg">
+			<div class="caption">
+				<div class="panel-group">
+					<div>Close up of the circuit. We were able to put the ESP8266 (ESP-201 variant) on the breadboard using pin extension headers.</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="thumbnail">
+			<img
+				src="servlet/load/flowerino/project01-control-lights-esp8266/images/user-interface-screenshot.png">
+			<div class="caption">
+				<div class="panel-group">
+					<div>The web user interface. The buttons control the relays and update the status. When the hardware push buttons are pushed,
+					the status is updated as well.</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
