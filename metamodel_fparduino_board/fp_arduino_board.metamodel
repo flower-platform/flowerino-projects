@@ -786,7 +786,7 @@
 <attribute NAME="label" VALUE="HTTP server instance name"/>
 <attribute NAME="propertyEmptyEqualsNull" VALUE="true" OBJECT="java.lang.Boolean|true"/>
 <attribute NAME="propertyLineRenderer" VALUE="Default"/>
-<attribute NAME="propertyDefaultValue" VALUE="httpServer"/>
+<attribute NAME="propertyDefaultValue" VALUE="httpServer1"/>
 </node>
 <node TEXT="" ID="ID_164262448" CREATED="1446801190016" MODIFIED="1446801190016">
 <attribute NAME="nodeType" VALUE="genericDescriptor"/>
@@ -839,7 +839,7 @@
 <attribute NAME="label" VALUE="HTTP server instance name"/>
 <attribute NAME="propertyEmptyEqualsNull" VALUE="true" OBJECT="java.lang.Boolean|true"/>
 <attribute NAME="propertyLineRenderer" VALUE="Default"/>
-<attribute NAME="propertyDefaultValue" VALUE="httpServer"/>
+<attribute NAME="propertyDefaultValue" VALUE="httpServer1"/>
 </node>
 <node TEXT="" ID="ID_1815067491" CREATED="1446803393904" MODIFIED="1446803393904">
 <attribute NAME="nodeType" VALUE="genericDescriptor"/>
@@ -945,7 +945,7 @@
 <attribute NAME="label" VALUE="HTTP server instance name"/>
 <attribute NAME="propertyEmptyEqualsNull" VALUE="true" OBJECT="java.lang.Boolean|true"/>
 <attribute NAME="propertyLineRenderer" VALUE="Default"/>
-<attribute NAME="propertyDefaultValue" VALUE="httpServer"/>
+<attribute NAME="propertyDefaultValue" VALUE="httpServer1"/>
 </node>
 <node TEXT="" ID="ID_1533155832" CREATED="1448007596005" MODIFIED="1448007596005">
 <attribute NAME="nodeType" VALUE="genericDescriptor"/>
