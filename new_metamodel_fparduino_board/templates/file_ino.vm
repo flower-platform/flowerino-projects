@@ -1,0 +1,26 @@
+#macro( metadata $node )#end
+#macro( documentation $node )#end
+#set( $root = $node )
+#foreach( $import in $imports )
+\#include <$import>
+#end
+
+#foreach( $child in $NodeTemplateUtils.getChildren($node.nodeUri) )
+#callMacroWithSuffix( $child, "")
+#end
+
+#if ($hasCustomCode)
+\#include "CustomCode.h"
+
+ApplicationGen* app = new ApplicationCustom();
+#else
+ApplicationGen* app = new ApplicationGen();
+#end
+
+void setup() {
+	app->setup();
+}
+
+void loop() {
+	app->loop();
+}

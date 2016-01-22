@@ -1,0 +1,88 @@
+################################
+## HttpServer
+################################
+
+#macro( HttpServer_init $node )
+uint8_t ipAddress[] = { ${node.getPropertyValue('ipAddress').replaceAll("\.", ", ")} };
+memcpy(${node.getPropertyValue('name')}.ipAddress, ipAddress, 4);
+${node.getPropertyValue('name')}.port = ${node.getPropertyValue('port')};
+#end
+
+#macro( HttpServer_loop $node )#end
+
+#macro( HttpServer_handlers $node )
+#set ($serverNode = $node)
+virtual void httpServer_onCommandReceived(Event* event) {
+	HttpCommandEvent* castedEvent = (HttpCommandEvent*) event;
+	
+	char command[32];
+	castedEvent->server->getCommandFromUrl(castedEvent->url, command);
+	bool urlFound = false;
+	
+	BufferedPrint out(castedEvent->client);
+	
+	if (strcmp_P(command, PSTR("")) == 0) {
+		urlFound = true;
+#set( $url = "" )
+#@indent()
+	#HttpServer_ui( $NodeTemplateUtils.navigateByType($root.nodeUri, ["ui"]) )
+#end
+	} else if (strcmp_P(command, PSTR("getState")) == 0) {
+		urlFound = true;
+#foreach( $child in $NodeTemplateUtils.getChildren($serverNode.nodeUri) )
+#if( $child.type.endsWith("onCommandReceived(HttpCommandEvent)") )
+	} else if (strcmp_P(command, PSTR("${child.getPropertyValue('mapping')}")) == 0) {
+		urlFound = true;
+#foreach( $invocation in $NodeTemplateUtils.getChildren($child.nodeUri) )
+#set( $targetMethodNode = $NodeTemplateUtils.getNode($invocation.getPropertyValue('target')) )
+#set( $targetInstance = $NodeTemplateUtils.getParent($targetMethodNode.nodeUri).getPropertyValue('name') )
+#set( $targetMethod = $CommonsStringUtils.substringBefore($targetMethodNode.getPropertyValue('name'), '(') )
+#set( $targetMethodFull = $targetMethodNode.getPropertyValue('name') )
+#@indent()
+		#evaluate( "#${invocation.getPropertyValue('template')}" )
+#end
+#end
+#end
+#end
+	}
+	
+	if (urlFound) {
+		castedEvent->server->httpSuccess(&out);
+		printStateAsJson(&out);
+	} else {
+		castedEvent->server->httpError404(&out);
+	}
+	out.flush();
+}
+
+#set( $instance = $node )
+#foreach( $child in $NodeTemplateUtils.getChildren($serverNode.nodeUri) )
+#if( !$child.type.endsWith("onCommandReceived(HttpCommandEvent)") )
+#default_handler( $child )
+#end
+#end
+#end
+
+#####
+
+#macro( HttpServer_addListeners $node )
+${node.getPropertyValue('name')}.onCommandReceived = new DelegatingListener<ApplicationGen>(this, &ApplicationGen::httpServer_onCommandReceived);
+#set( $instance = $node )
+#foreach( $child in $NodeTemplateUtils.getChildren($node.nodeUri) )
+#if( !$child.type.endsWith("onCommandReceived(HttpCommandEvent)") )
+#standardEvent_addListener
+#end
+#end
+#end
+
+#####
+
+#macro( HttpServer_ui $node )
+#set( $ui = "#compressHtml()#parse('index.vm')#end" )
+	castedEvent->server->httpSuccess(&out, HttpServer::CONTENT_TYPE_HTML);
+#foreach( $section in $TemplateUtils.split($ui) )
+out.write_P(PSTR("$section"));
+#end
+out.flush();
+return;
+#end

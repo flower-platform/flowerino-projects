@@ -1,0 +1,14 @@
+################################
+## LoggerSD
+################################
+
+#macro( LoggerSD_declaration $node )
+LoggerSD<${node.getPropertyValue('valueType')}> ${node.getPropertyValue('name')};
+#end
+
+#macro( LoggerSD_init $node )
+${node.getPropertyValue('name')}.slaveSelectPin = ${node.getPropertyValue('slaveSelectPin')};
+${node.getPropertyValue('name')}.timeInterval = ${node.getPropertyValue('timeInterval')};
+#end
+
+#macro( LoggerSD_loop $node )#end

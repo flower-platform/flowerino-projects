@@ -1,0 +1,68 @@
+#macro( board $node )
+#set ( $board = $node )
+class ApplicationGen {
+protected:
+#foreach( $child in $NodeTemplateUtils.getChildren($board.nodeUri) )
+#@indent()
+	#callMacroWithSuffix( $child "_declaration" )
+#end
+#end
+
+#foreach( $child in $NodeTemplateUtils.getChildren($board.nodeUri) )
+#@indent()
+	#callMacroWithSuffix( $child "_handlers" )
+#end
+#end
+public:
+	virtual ~ApplicationGen() { }
+
+	virtual void setup() {
+		pinMode(SS, OUTPUT);
+		digitalWrite(SS, HIGH);
+		
+#foreach( $child in $NodeTemplateUtils.getChildren($board.nodeUri) )
+#@indent()
+		#callMacroWithSuffix( $child "_init" )
+#end
+
+#end
+
+#foreach( $child in $NodeTemplateUtils.getChildren($board.nodeUri) )
+#@indent()
+		#callMacroWithSuffix( $child "_setup" )
+#end
+#end
+
+#foreach( $child in $NodeTemplateUtils.getChildren($board.nodeUri) )
+#@indent()
+		#callMacroWithSuffix( $child "_addListeners" )
+#end
+#end
+	}
+	
+	virtual void loop() {
+#foreach( $child in $NodeTemplateUtils.getChildren($board.nodeUri) )
+#@indent()
+		#callMacroWithSuffix( $child "_loop" )
+#end
+#end
+	}
+	
+	void printStateAsJson(Print* print) {
+		print->print(F("{"));
+	
+#foreach( $child in $NodeTemplateUtils.getChildren($board.nodeUri) )
+#if ( ${child.getPropertyValue('contributesToState')} )
+		${child.getPropertyValue('name')}.printStateAsJson(F("${child.getPropertyValue('name')}"), print);
+		print->print(F(","));
+#end
+#end
+
+		write_P(print, PSTR("\"FREE_MEM\": "));
+		print->print(freeRam());
+		print->print("}");
+	}
+
+};
+
+#end

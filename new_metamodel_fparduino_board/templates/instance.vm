@@ -1,0 +1,46 @@
+################################
+## Instance
+################################
+
+#macro( default_declaration $node )
+${NodeTemplateUtils.stripDynamicPrefix(${node.type})} ${node.getPropertyValue('name')};
+#end
+
+#macro( default_init $node )
+#foreach( $key in $NodeTemplateUtils.getPropertyNames($node) )
+#if ($key != "name" && $key != "contributesToState" && "$!{node.getPropertyValue($key)}" != "")
+#if ($key != "pin" && ${node.getPropertyValue($key).class.simpleName} == "String")
+${node.getPropertyValue('name')}.$key = "${node.getPropertyValue($key)}";
+#else
+${node.getPropertyValue('name')}.$key = ${node.getPropertyValue($key)};
+#end
+#end
+#end
+#end
+
+#macro( default_setup $node )
+${node.getPropertyValue('name')}.setup();
+#end
+
+#macro( default_handlers $node )
+#set( $instance = $node )
+#foreach( $child in $NodeTemplateUtils.getChildren($node.nodeUri) )
+#if (!$child.type.endsWith("method"))
+#callMacroWithSuffix( $child "_handler" )
+
+#end
+#end
+#end
+
+#macro( default_addListeners $node )
+#set( $instance = $node )
+#foreach( $child in $NodeTemplateUtils.getChildren($node.nodeUri) )
+#if (!$child.type.endsWith("method"))
+#callMacroWithSuffix( $child "_addListener" )
+#end
+#end
+#end
+
+#macro( default_loop $node )
+${node.getPropertyValue('name')}.loop();
+#end

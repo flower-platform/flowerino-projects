@@ -1,0 +1,334 @@
+<map version="freeplane 1.3.0">
+<!--To view this file, download free mind mapping software Freeplane from http://freeplane.sourceforge.net -->
+<node TEXT="New Mindmap" ID="ID_1239709421" CREATED="1453013685995" MODIFIED="1453013685995"><hook NAME="MapStyle">
+    <properties show_icon_for_attributes="true"/>
+
+<map_styles>
+<stylenode LOCALIZED_TEXT="styles.root_node">
+<stylenode LOCALIZED_TEXT="styles.predefined" POSITION="right">
+<stylenode LOCALIZED_TEXT="default" MAX_WIDTH="600" COLOR="#000000" STYLE="as_parent">
+<font NAME="SansSerif" SIZE="10" BOLD="false" ITALIC="false"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="defaultstyle.details"/>
+<stylenode LOCALIZED_TEXT="defaultstyle.note"/>
+<stylenode LOCALIZED_TEXT="defaultstyle.floating">
+<edge STYLE="hide_edge"/>
+<cloud COLOR="#f0f0f0" SHAPE="ROUND_RECT"/>
+</stylenode>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.user-defined" POSITION="right">
+<stylenode LOCALIZED_TEXT="styles.topic" COLOR="#18898b" STYLE="fork">
+<font NAME="Liberation Sans" SIZE="10" BOLD="true"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subtopic" COLOR="#cc3300" STYLE="fork">
+<font NAME="Liberation Sans" SIZE="10" BOLD="true"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.subsubtopic" COLOR="#669900">
+<font NAME="Liberation Sans" SIZE="10" BOLD="true"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.important">
+<icon BUILTIN="yes"/>
+</stylenode>
+</stylenode>
+<stylenode LOCALIZED_TEXT="styles.AutomaticLayout" POSITION="right">
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level.root" COLOR="#000000">
+<font SIZE="18"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,1" COLOR="#0033ff">
+<font SIZE="16"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,2" COLOR="#00b439">
+<font SIZE="14"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,3" COLOR="#990000">
+<font SIZE="12"/>
+</stylenode>
+<stylenode LOCALIZED_TEXT="AutomaticLayout.level,4" COLOR="#111111">
+<font SIZE="10"/>
+</stylenode>
+</stylenode>
+</stylenode>
+</map_styles>
+</hook>
+<attribute NAME="nodeType" VALUE="dynamic_root"/>
+<attribute NAME="natures" VALUE="mainModel,configRepository,metamodel,downloadableLib"/>
+<attribute NAME="configRepositorySets" VALUE="configRepository"/>
+<attribute NAME="targetConfigRepositorySets" VALUE="htmlUiLibs"/>
+<node TEXT="" POSITION="right" ID="ID_1527539281" CREATED="1453013686015" MODIFIED="1453013686015">
+<attribute NAME="nodeType" VALUE="metamodel"/>
+<attribute NAME="prefix" VALUE="fparduino"/>
+<node TEXT="" ID="ID_476122056" CREATED="1431686767859" MODIFIED="1431686767859">
+<attribute NAME="nodeType" VALUE="typeOrCategoryDescriptor"/>
+<attribute NAME="name" VALUE="category.element"/>
+<attribute NAME="propertyForLabel" VALUE="id;EXTRA_INFO_ENTRIES:(valueConverter=addTypeSuffix)"/>
+<node TEXT="" ID="ID_213301124" CREATED="1431686767860" MODIFIED="1431686767860">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="id"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/edit.png"/>
+<attribute NAME="label" VALUE="Id"/>
+</node>
+<node TEXT="" ID="ID_141414203" CREATED="1431686826282" MODIFIED="1431686826282">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="cssClass"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/edit.png"/>
+<attribute NAME="label" VALUE=""/>
+</node>
+</node>
+<node TEXT="" ID="ID_660870078" CREATED="1431686791502" MODIFIED="1431686791502">
+<attribute NAME="nodeType" VALUE="typeOrCategoryDescriptor"/>
+<attribute NAME="name" VALUE="category.container"/>
+<node TEXT="" ID="ID_1213958715" CREATED="1431686791503" MODIFIED="1431686791503">
+<attribute NAME="nodeType" VALUE="addChildDescriptor"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/add.png"/>
+<attribute NAME="label" VALUE="Row"/>
+<attribute NAME="childType" VALUE="Row"/>
+</node>
+<node TEXT="" ID="ID_1292222123" CREATED="1431686791504" MODIFIED="1431686791504">
+<attribute NAME="nodeType" VALUE="addChildDescriptor"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/add.png"/>
+<attribute NAME="label" VALUE="Panel"/>
+<attribute NAME="childType" VALUE="Panel"/>
+</node>
+<node TEXT="" ID="ID_332309735" CREATED="1431686791505" MODIFIED="1431686791505">
+<attribute NAME="nodeType" VALUE="addChildDescriptor"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/add.png"/>
+<attribute NAME="label" VALUE="Label"/>
+<attribute NAME="childType" VALUE="Label"/>
+</node>
+<node TEXT="" ID="ID_512719085" CREATED="1431686791506" MODIFIED="1431686791506">
+<attribute NAME="nodeType" VALUE="addChildDescriptor"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/add.png"/>
+<attribute NAME="label" VALUE="Button"/>
+<attribute NAME="childType" VALUE="Button"/>
+</node>
+<node TEXT="" ID="ID_377611586" CREATED="1442399329481" MODIFIED="1442399329481">
+<attribute NAME="nodeType" VALUE="addChildDescriptor"/>
+<attribute NAME="orderIndex" VALUE="-2.147483648E9" OBJECT="java.lang.Double|-2.147483648E9"/>
+<attribute NAME="label" VALUE="IRLearnButton"/>
+<attribute NAME="childType" VALUE="IRLearnButton"/>
+<attribute NAME="type" VALUE="addChildDescriptor"/>
+</node>
+</node>
+<node TEXT="" ID="ID_937755059" CREATED="1431686780834" MODIFIED="1431686780834">
+<attribute NAME="nodeType" VALUE="typeOrCategoryDescriptor"/>
+<attribute NAME="cloudType" VALUE="ROUND_RECT"/>
+<attribute NAME="cloudColor" VALUE="#D0E9C6"/>
+<attribute NAME="name" VALUE="Row"/>
+<attribute NAME="icons" VALUE="images/Row.png;EXTRA_INFO_ENTRIES:(valueConverter=metamodelImagesListToList)"/>
+<attribute NAME="petaldoc" VALUE="&lt;p&gt;A row is a container of columns (cf. Bootstrap responsive grid mechanism).&lt;/p&gt;"/>
+<node TEXT="" ID="ID_629861224" CREATED="1431686780837" MODIFIED="1431686780837">
+<attribute NAME="nodeType" VALUE="containingCategory"/>
+<attribute NAME="name" VALUE="category.element"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/folder.gif"/>
+</node>
+<node TEXT="" ID="ID_582658787" CREATED="1431686780839" MODIFIED="1431686780839">
+<attribute NAME="nodeType" VALUE="addChildDescriptor"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/add.png"/>
+<attribute NAME="label" VALUE="Column"/>
+<attribute NAME="childType" VALUE="Column"/>
+</node>
+</node>
+<node TEXT="" ID="ID_1112226784" CREATED="1431686774334" MODIFIED="1431686774334">
+<attribute NAME="nodeType" VALUE="typeOrCategoryDescriptor"/>
+<attribute NAME="cloudType" VALUE="ROUND_RECT"/>
+<attribute NAME="cloudColor" VALUE="#F7A6A4"/>
+<attribute NAME="name" VALUE="Column"/>
+<attribute NAME="icons" VALUE="images/Column.png;EXTRA_INFO_ENTRIES:(valueConverter=metamodelImagesListToList)"/>
+<attribute NAME="propertyForLabel" VALUE="positions;EXTRA_INFO_ENTRIES:(valueConverter=addTypeSuffix)"/>
+<node TEXT="" ID="ID_1741710132" CREATED="1431686774336" MODIFIED="1431686774336">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="positions"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/edit.png"/>
+<attribute NAME="label" VALUE="Positions"/>
+</node>
+<node TEXT="" ID="ID_1384991074" CREATED="1432288227848" MODIFIED="1432288227848">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="mobileModeIfLessThan"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/edit.png"/>
+<attribute NAME="label" VALUE="Mobile mode if screen resolution &lt;"/>
+<attribute NAME="propertyType" VALUE="DropDownList"/>
+<attribute NAME="propertyDefaultValue" VALUE="md"/>
+<node TEXT="" ID="ID_379471831" CREATED="1432558112745" MODIFIED="1432558112745">
+<attribute NAME="nodeType" VALUE="propertyPossibleValue"/>
+<attribute NAME="value" VALUE="xs"/>
+<attribute NAME="label" VALUE="None (i.e. col-xs cf. Bootstrap)"/>
+<attribute NAME="type" VALUE="propertyPossibleValue"/>
+</node>
+<node TEXT="" ID="ID_797213526" CREATED="1432558124916" MODIFIED="1432558124916">
+<attribute NAME="nodeType" VALUE="propertyPossibleValue"/>
+<attribute NAME="label" VALUE="~768px (i.e. col-sm cf. Bootstrap)"/>
+<attribute NAME="type" VALUE="propertyPossibleValue"/>
+<attribute NAME="value" VALUE="sm"/>
+</node>
+<node TEXT="" ID="ID_587709845" CREATED="1432558135427" MODIFIED="1432558135427">
+<attribute NAME="nodeType" VALUE="propertyPossibleValue"/>
+<attribute NAME="label" VALUE="~992px (i.e. col-md cf. Bootstrap)"/>
+<attribute NAME="type" VALUE="propertyPossibleValue"/>
+<attribute NAME="value" VALUE="md"/>
+</node>
+<node TEXT="" ID="ID_98755407" CREATED="1432558149808" MODIFIED="1432558149808">
+<attribute NAME="nodeType" VALUE="propertyPossibleValue"/>
+<attribute NAME="label" VALUE="~1200px (i.e. col-lg cf. Bootstrap)"/>
+<attribute NAME="type" VALUE="propertyPossibleValue"/>
+<attribute NAME="value" VALUE="lg"/>
+</node>
+</node>
+<node TEXT="" ID="ID_3588246" CREATED="1431686774338" MODIFIED="1431686774338">
+<attribute NAME="nodeType" VALUE="containingCategory"/>
+<attribute NAME="doNotAddMetamodelPrefix" VALUE="false" OBJECT="java.lang.Boolean|false"/>
+<attribute NAME="name" VALUE="category.container"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/folder.gif"/>
+</node>
+<node TEXT="" ID="ID_4410638" CREATED="1431686774340" MODIFIED="1431686774340">
+<attribute NAME="nodeType" VALUE="containingCategory"/>
+<attribute NAME="name" VALUE="category.element"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/folder.gif"/>
+</node>
+</node>
+<node TEXT="" ID="ID_1217754697" CREATED="1429862240144" MODIFIED="1429862240144">
+<attribute NAME="nodeType" VALUE="typeOrCategoryDescriptor"/>
+<attribute NAME="name" VALUE="Panel"/>
+<attribute NAME="type" VALUE="typeOrCategoryDescriptor"/>
+<attribute NAME="propertyForLabel" VALUE="title;EXTRA_INFO_ENTRIES:(valueConverter=addTypeSuffix)"/>
+<attribute NAME="icons" VALUE="images/Panel.png;EXTRA_INFO_ENTRIES:(valueConverter=metamodelImagesListToList)"/>
+<attribute NAME="cloudColor" VALUE="#FFD699"/>
+<attribute NAME="cloudType" VALUE="ROUND_RECT"/>
+<node TEXT="" ID="ID_1936885101" CREATED="1430124940986" MODIFIED="1430124940986">
+<attribute NAME="nodeType" VALUE="containingCategory"/>
+<attribute NAME="name" VALUE="category.element"/>
+<attribute NAME="type" VALUE="containingCategory"/>
+</node>
+<node TEXT="" ID="ID_852007138" CREATED="1432292255768" MODIFIED="1432292255768">
+<attribute NAME="nodeType" VALUE="containingCategory"/>
+<attribute NAME="doNotAddMetamodelPrefix" VALUE="false" OBJECT="java.lang.Boolean|false"/>
+<attribute NAME="name" VALUE="category.container"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/folder.gif"/>
+</node>
+<node TEXT="" ID="ID_1408151188" CREATED="1429873303735" MODIFIED="1429873303735">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="title"/>
+<attribute NAME="label" VALUE="Title"/>
+<attribute NAME="type" VALUE="propertyDescriptor"/>
+<attribute NAME="propertyInitialValue" VALUE="$SIMPLE_TYPE_FIRST_LOWERCASE$#"/>
+</node>
+</node>
+<node TEXT="" ID="ID_1872150564" CREATED="1429862365529" MODIFIED="1429862365529">
+<attribute NAME="nodeType" VALUE="typeOrCategoryDescriptor"/>
+<attribute NAME="name" VALUE="Label"/>
+<attribute NAME="propertyForLabel" VALUE="text;EXTRA_INFO_ENTRIES:(valueConverter=addTypeSuffix)"/>
+<attribute NAME="type" VALUE="typeOrCategoryDescriptor"/>
+<attribute NAME="icons" VALUE="images/Label.png;EXTRA_INFO_ENTRIES:(valueConverter=metamodelImagesListToList)"/>
+<node TEXT="" ID="ID_1164218714" CREATED="1430124947399" MODIFIED="1430124947399">
+<attribute NAME="nodeType" VALUE="containingCategory"/>
+<attribute NAME="name" VALUE="category.element"/>
+<attribute NAME="type" VALUE="containingCategory"/>
+</node>
+<node TEXT="" ID="ID_389750607" CREATED="1429862456527" MODIFIED="1429862456527">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="text"/>
+<attribute NAME="label" VALUE="Text"/>
+<attribute NAME="type" VALUE="propertyDescriptor"/>
+</node>
+<node TEXT="" ID="ID_522807179" CREATED="1431685058738" MODIFIED="1431685058738">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="textIfHigh"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/edit.png"/>
+<attribute NAME="label" VALUE="Text if HIGH"/>
+</node>
+<node TEXT="" ID="ID_441492279" CREATED="1431685066799" MODIFIED="1431685066799">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="textIfLow"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/edit.png"/>
+<attribute NAME="label" VALUE="Text if LOW"/>
+</node>
+<node TEXT="" ID="ID_49847113" CREATED="1431685067540" MODIFIED="1431685067540">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="classIfHigh"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/edit.png"/>
+<attribute NAME="label" VALUE="Class if HIGH"/>
+</node>
+<node TEXT="" ID="ID_1543958609" CREATED="1431685069980" MODIFIED="1431685069980">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="classIfLow"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/edit.png"/>
+<attribute NAME="label" VALUE="Class if LOW"/>
+</node>
+</node>
+<node TEXT="" ID="ID_1804295354" CREATED="1429862514229" MODIFIED="1429862514229">
+<attribute NAME="nodeType" VALUE="typeOrCategoryDescriptor"/>
+<attribute NAME="name" VALUE="Button"/>
+<attribute NAME="propertyForLabel" VALUE="name;EXTRA_INFO_ENTRIES:(valueConverter=addTypeSuffix)"/>
+<attribute NAME="type" VALUE="typeOrCategoryDescriptor"/>
+<attribute NAME="icons" VALUE="images/Button.png;EXTRA_INFO_ENTRIES:(valueConverter=metamodelImagesListToList)"/>
+<node TEXT="" ID="ID_1323442199" CREATED="1430124952016" MODIFIED="1430124952016">
+<attribute NAME="nodeType" VALUE="containingCategory"/>
+<attribute NAME="name" VALUE="category.element"/>
+<attribute NAME="type" VALUE="containingCategory"/>
+</node>
+<node TEXT="" ID="ID_1677843903" CREATED="1429862523062" MODIFIED="1429862523062">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="text"/>
+<attribute NAME="label" VALUE="Text"/>
+<attribute NAME="type" VALUE="propertyDescriptor"/>
+</node>
+<node TEXT="" ID="ID_883724675" CREATED="1430127362148" MODIFIED="1430127362148">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="glyphicon"/>
+<attribute NAME="label" VALUE="Glyphicon"/>
+<attribute NAME="type" VALUE="propertyDescriptor"/>
+</node>
+<node TEXT="" ID="ID_1807592069" CREATED="1430127410598" MODIFIED="1430127410598">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="onclick"/>
+<attribute NAME="label" VALUE="On Click"/>
+<attribute NAME="type" VALUE="propertyDescriptor"/>
+</node>
+</node>
+<node TEXT="" ID="ID_1845467663" CREATED="1442399334546" MODIFIED="1442399334546">
+<attribute NAME="nodeType" VALUE="typeOrCategoryDescriptor"/>
+<attribute NAME="name" VALUE="IRLearnButton"/>
+<attribute NAME="propertyForLabel" VALUE="name;EXTRA_INFO_ENTRIES:(valueConverter=addTypeSuffix)"/>
+<attribute NAME="icons" VALUE="images/Button.png;EXTRA_INFO_ENTRIES:(valueConverter=metamodelImagesListToList)"/>
+<attribute NAME="petaldoc" VALUE="&lt;p&gt;Button for the &lt;code&gt;IRLearner&lt;/code&gt; petal. &lt;/p&gt; When pressed, a dialog pops up, asking for the name of the command to be saved. After clicking OK, point the remote towards the IR receiver connected to the Arduino board and press the desired button on the remote, in order to save the command.&lt;/p&gt;"/>
+<node TEXT="" ID="ID_1881487534" CREATED="1442399334546" MODIFIED="1442399334546">
+<attribute NAME="nodeType" VALUE="containingCategory"/>
+<attribute NAME="name" VALUE="category.element"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/folder.gif"/>
+</node>
+<node TEXT="" ID="ID_1914511538" CREATED="1442399334556" MODIFIED="1442399334556">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="text"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/edit.png"/>
+<attribute NAME="label" VALUE="Text"/>
+<attribute NAME="propertyDefaultValue" VALUE="Learn IR command"/>
+</node>
+<node TEXT="" ID="ID_1696590424" CREATED="1442399334556" MODIFIED="1442399334556">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="glyphicon"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/edit.png"/>
+<attribute NAME="label" VALUE="Glyphicon"/>
+</node>
+<node TEXT="" ID="ID_446097327" CREATED="1442489393041" MODIFIED="1442489393041">
+<attribute NAME="nodeType" VALUE="propertyDescriptor"/>
+<attribute NAME="name" VALUE="onclick"/>
+<attribute NAME="icons" VALUE="servlet/public-resources/org.flowerplatform.resources/images/core/edit.png"/>
+<attribute NAME="label" VALUE="On Click"/>
+<attribute NAME="propertyDefaultValue" VALUE="irLearnCommand"/>
+</node>
+</node>
+<node TEXT="" ID="ID_1953022306" CREATED="1429864149309" MODIFIED="1429864149309">
+<attribute NAME="nodeType" VALUE="typeOrCategoryDescriptor"/>
+<attribute NAME="name" VALUE="ui"/>
+<attribute NAME="type" VALUE="typeOrCategoryDescriptor"/>
+<attribute NAME="backgroundColor" VALUE="#D0E9C6"/>
+<attribute NAME="icons" VALUE="images/UI.png;EXTRA_INFO_ENTRIES:(valueConverter=metamodelImagesListToList)"/>
+<node TEXT="" ID="ID_1442098675" CREATED="1429864164145" MODIFIED="1429864164145">
+<attribute NAME="nodeType" VALUE="addChildDescriptor"/>
+<attribute NAME="label" VALUE="Row"/>
+<attribute NAME="childType" VALUE="Row"/>
+<attribute NAME="type" VALUE="addChildDescriptor"/>
+</node>
+</node>
+</node>
+</node>
+</map>
