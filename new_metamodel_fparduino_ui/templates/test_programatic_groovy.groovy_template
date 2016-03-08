@@ -1,0 +1,48 @@
+<%
+	generationSession.scope.put("utils", new org.flowerplatform.codesync.template_new.TemplateUtils(generationSession) {
+		
+		def replacementAlgo(nodeUri) {
+			String output = " ";
+			for (child in nodeService.getChildren(nodeUri, null)) {
+				genericDescriptors = behaviorRegistry.getAdditiveControllers("componentTemplate", child);
+				String pattern = '\\$fp\\.((?:\\w|_)*)';				
+				String result = org.flowerplatform.util.Utils.replaceRegEx(genericDescriptors[0].value, java.util.regex.Pattern.compile(pattern), new org.flowerplatform.util.RunnableWithParam<String, java.util.regex.Matcher>() {
+					public String run(java.util.regex.Matcher param) {
+						String nodePropertyName  = param.group(1);
+						if(nodePropertyName.equals("children")){
+							//return "am ajuns la proprietatea " +  nodePropertyName +  " de pe nodul " + child.getNodeUri() ;
+							return replacementAlgo(child.getNodeUri());
+						}
+						//out.println("Sunt pe nodul " +  child.getNodeUri());
+						return  child.getPropertyValue(nodePropertyName); 
+					}
+							
+				});
+				output += result;		
+			}
+			output;
+		}
+	});
+%>
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+      <style>
+         .horiz > *{
+         display: inline-block;
+         white-space: nowrap;
+         }
+         .vert > *{
+         display: table;
+         white-space: normal;			
+         }
+      </style>
+   </head>
+<body>
+<%
+	String htmlOutput = utils.replacementAlgo(node.getNodeUri());
+	out.println(htmlOutput);
+%>
+</body>
+</html>

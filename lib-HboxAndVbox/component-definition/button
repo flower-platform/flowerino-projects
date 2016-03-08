@@ -1,0 +1,1 @@
+<button value="$fp.value" disabled="$fp.disaled">$fp.text</button>
