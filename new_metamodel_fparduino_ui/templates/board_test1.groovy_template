@@ -1,0 +1,148 @@
+<%
+import org.flowerplatform.util.Utils;
+import org.flowerplatform.util.UtilConstants;
+
+final PROPERTY_NAME = "name";
+
+generationSession.scope.put("utils", new org.flowerplatform.codesync.template_new.TemplateUtils(generationSession) {
+	//TODO : check if "null" (as string value, as opposed to the value null) is ok to be returned from node.getPropertyValue();
+	boolean isEmptyString(Object param) {
+		String strValue = String.valueOf(param);
+	
+		return strValue == null || strValue.allWhitespace || "null".equals(strValue);
+	}
+	
+	//Some property names should be excluded automatically (such as the "name" property, so that we don't end up with stuff like varName.name = varName)
+	//This function returns true if the property name given as parameter should be excluded from processing.
+	boolean excludePropertyName(String propertyName) {
+		String[] excludePropertyNames = [PROPERTY_NAME] as String[];
+		
+		for (String prop : excludePropertyNames) {
+			if (prop.equals(propertyName)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	String getEventHandlerFunctionName(String componentName, String eventName) {
+		return componentName + "_" + eventName;
+	}
+	
+	//TODO : this is a temporary hack so that we can have the proper param list for the event handlers.
+	//This needs to be replaced with the proper implementation.
+	String getEventHandlerParamListAsString(Object eventNode) {
+		def eventName = eventNode.getPropertyValue(PROPERTY_NAME);
+		if (eventName.toLowerCase().contains("timer")) {
+			return "TimerEvent* event";
+		} else {
+			return "ValueChangedEvent* event";
+		}
+	}
+});
+
+%>
+
+#include <Arduino.h>
+#include <FlowerPlatformArduinoRuntime.h>
+#include <HardwareSerial.h>
+#include <Input.h>
+#include <Output.h>
+#include <stdbool.h>
+#include <Timer.h>
+
+<%
+//Declaring the components
+for (child in nodeService.getChildren(node.getNodeUri(), null)) { 
+	def childName = child.getPropertyValue(PROPERTY_NAME);
+	
+	//Exclude any component that doesn't have a name
+	if (!utils.isEmptyString(childName)) {
+	
+%>${Utils.getSimpleTypeFromDynamicType(child.getType())} ${childName};\r\n<%
+
+	}
+}
+
+//Add the corresponding event handler stub implementations.
+for (child in nodeService.getChildren(node.getNodeUri(), null)) {
+	def childName = child.getPropertyValue(PROPERTY_NAME);
+
+	for (eventNode in nodeService.getChildren(child.getNodeUri(), null)) {
+		if ( behaviorRegistry.belongsToCategory(org.flowerplatform.arduino.ArduinoNodeConstants.TYPE_CATEGORY_EVENT, eventNode, null, true, null) ) {
+			def eventName = eventNode.getPropertyValue(PROPERTY_NAME);
+		
+%>
+void ${utils.getEventHandlerFunctionName(childName, eventName)}(${utils.getEventHandlerParamListAsString(eventNode)}) {
+}
+<%
+
+		}
+	}
+}
+%>
+
+void setup() {
+	Serial.begin(115200);
+	
+<%
+	//Property initialisation section.
+	for (child in nodeService.getChildren(node.getNodeUri(), null)) {
+		def childName = child.getPropertyValue(PROPERTY_NAME);
+	
+		for (childPropertyName in behaviorRegistry.getAdditiveControllers(UtilConstants.FEATURE_PROPERTY_DESCRIPTORS, child)) {
+			def propertyName = childPropertyName.getName();
+			def propertyValue = child.getPropertyValue(propertyName);
+
+			//some property names, such as "name" should be excluded from initialisation.
+			if (utils.excludePropertyName(propertyName)) {
+				continue;
+			}
+			
+			if (!utils.isEmptyString(propertyValue)) {
+			
+%>	${childName}.${propertyName} = ${propertyValue};\r\n<%
+			
+			}
+		}
+	
+		out.println();
+	}
+	
+	//Add the corresponding event handler references.
+	for (child in nodeService.getChildren(node.getNodeUri(), null)) {
+		def childName = child.getPropertyValue(PROPERTY_NAME);
+	
+		for (eventNode in nodeService.getChildren(child.getNodeUri(), null)) {
+			if ( behaviorRegistry.belongsToCategory(org.flowerplatform.arduino.ArduinoNodeConstants.TYPE_CATEGORY_EVENT, eventNode, null, true, null) ) {
+				def eventName = eventNode.getPropertyValue(PROPERTY_NAME);
+			
+%>	${childName}.${eventName} = &${utils.getEventHandlerFunctionName(childName, eventName)};\r\n<%
+
+			}
+		}
+	}
+%>
+	
+	//----------------------The setup() call for all components----------------------
+<%
+	for (child in nodeService.getChildren(node.getNodeUri(), null)) {
+		def childName = child.getPropertyValue(PROPERTY_NAME);
+
+%>	${childName}.setup();\r\n<%
+		
+	}
+%>
+}
+
+void loop() {
+<%
+	for (child in nodeService.getChildren(node.getNodeUri(), null)) {
+		def childName = child.getPropertyValue(PROPERTY_NAME);
+
+%>	${childName}.loop();\r\n<%
+		
+	}
+%>
+}

@@ -1,0 +1,4 @@
+useNewTemplates = true
+root = dynamic_fparduino__board
+label = Generator Andrei board_test1
+gen_files = generatedByAndrei.txt:board_test1

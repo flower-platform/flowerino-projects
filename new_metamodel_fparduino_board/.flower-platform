@@ -53,7 +53,7 @@
 <attribute NAME="nodeType" VALUE="dynamic_root"/>
 <attribute NAME="natures" VALUE="mainModel,configRepository,metamodel,downloadableLib"/>
 <attribute NAME="configRepositorySets" VALUE="configRepository"/>
-<attribute NAME="targetConfigRepositorySets" VALUE="arduinoLibs"/>
+<attribute NAME="targetConfigRepositorySets" VALUE="arduinoLibs.disabled"/>
 <node TEXT="" POSITION="right" ID="ID_1490033002" CREATED="1452951791166" MODIFIED="1452951791166">
 <attribute NAME="nodeType" VALUE="metamodel"/>
 <attribute NAME="prefix" VALUE="fparduino"/>
