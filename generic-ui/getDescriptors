@@ -1,0 +1,22 @@
+{
+	"commands": [{
+		"name": "turnLightOn",
+		"text": "com1",
+		"onclick": "com1"
+	},
+	{
+		"name": "turnLightOff",
+		"text": "com2",
+		"onclick": "com2"
+	}],
+	"elems": [{
+		"name": "input1",
+		"label": "input1",
+		"value": ""
+	},
+	{
+		"name": "output1",
+		"label": "output1",
+		"value": ""
+	}]
+}

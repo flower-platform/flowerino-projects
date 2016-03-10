@@ -1,0 +1,70 @@
+{
+	"commands": [{
+		"name": "light1Toggle",
+		"text": "Toggle light 1",
+		"onclick": "light1Toggle"
+	},
+	{
+		"name": "light1On",
+		"text": "Turn Light 1 on",
+		"onclick": "light1On"
+	},
+	{
+		"name": "light1Off",
+		"text": "Turn Light 1 off",
+		"onclick": "light1Off"
+	},
+	{
+		"name": "light2Toggle",
+		"text": "Toggle light 2",
+		"onclick": "light2Toggle"
+	},
+	{
+		"name": "light2On",
+		"text": "Turn Light 2 on",
+		"onclick": "light2On"
+	},
+	{
+		"name": "light2Off",
+		"text": "Turn Light 2 off",
+		"onclick": "light2Off"
+	},
+	{
+		"name": "acOn24",
+		"text": "Turn AC on 24°C",
+		"onclick": "acOn24"
+	},
+	{
+		"name": "acHeat28",
+		"text": " Turn on heat 28°C",
+		"onclick": "acHeat28"
+	},
+	{
+		"name": "acOff",
+		"text": "Turn AC off",
+		"onclick": "acOff"
+	}	
+	
+	],
+	"elems": [{
+		"name": "input1",
+		"label": "Input 1",
+		"value": ""
+	},
+	{
+		"name": "output1",
+		"label": "Output 1",
+		"value": ""
+	},
+	{
+		"name": "input2",
+		"label": "Input 2",
+		"value": ""
+	},
+	{
+		"name": "output2",
+		"label": "Output 2 ",
+		"value": ""
+	}
+	]
+}
