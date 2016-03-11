@@ -1,6 +1,7 @@
 <%
 import org.flowerplatform.util.Utils;
 import org.flowerplatform.util.UtilConstants;
+import org.flowerplatform.arduino.ArduinoNodeConstants;
 
 final PROPERTY_NAME = "name";
 
@@ -29,16 +30,26 @@ generationSession.scope.put("utils", new org.flowerplatform.codesync.template_ne
 	String getEventHandlerFunctionName(String componentName, String eventName) {
 		return componentName + "_" + eventName;
 	}
-	
-	//TODO : this is a temporary hack so that we can have the proper param list for the event handlers.
-	//This needs to be replaced with the proper implementation.
+
 	String getEventHandlerParamListAsString(Object eventNode) {
-		def eventName = eventNode.getPropertyValue(PROPERTY_NAME);
-		if (eventName.toLowerCase().contains("timer")) {
-			return "TimerEvent* event";
-		} else {
-			return "ValueChangedEvent* event";
+		def paramDescriptorList = behaviorRegistry.getAdditiveControllers(ArduinoNodeConstants.EVENT_PARAM_DESCRIPTORS, eventNode);
+		StringBuilder result = new StringBuilder();
+	
+		int paramIndex = 0;
+		for (paramDescriptor in paramDescriptorList) {
+			if (result.length() > 0) {
+				result.append(', ');
+			}
+		
+			result.append(paramDescriptor.getValue());
+			result.append(' ');
+			result.append("param");
+			result.append(paramIndex);
+			
+			paramIndex++;
 		}
+		
+		return result.toString();
 	}
 });
 
@@ -70,7 +81,7 @@ for (child in nodeService.getChildren(node.getNodeUri(), null)) {
 	def childName = child.getPropertyValue(PROPERTY_NAME);
 
 	for (eventNode in nodeService.getChildren(child.getNodeUri(), null)) {
-		if ( behaviorRegistry.belongsToCategory(org.flowerplatform.arduino.ArduinoNodeConstants.TYPE_CATEGORY_EVENT, eventNode, null, true, null) ) {
+		if ( behaviorRegistry.belongsToCategory(ArduinoNodeConstants.TYPE_CATEGORY_EVENT, eventNode, null, true, null) ) {
 			def eventName = eventNode.getPropertyValue(PROPERTY_NAME);
 		
 %>
@@ -115,7 +126,7 @@ void setup() {
 		def childName = child.getPropertyValue(PROPERTY_NAME);
 	
 		for (eventNode in nodeService.getChildren(child.getNodeUri(), null)) {
-			if ( behaviorRegistry.belongsToCategory(org.flowerplatform.arduino.ArduinoNodeConstants.TYPE_CATEGORY_EVENT, eventNode, null, true, null) ) {
+			if ( behaviorRegistry.belongsToCategory(ArduinoNodeConstants.TYPE_CATEGORY_EVENT, eventNode, null, true, null) ) {
 				def eventName = eventNode.getPropertyValue(PROPERTY_NAME);
 			
 %>	${childName}.${eventName} = &${utils.getEventHandlerFunctionName(childName, eventName)};\r\n<%
