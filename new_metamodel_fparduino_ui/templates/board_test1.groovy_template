@@ -83,9 +83,15 @@ for (child in nodeService.getChildren(node.getNodeUri(), null)) {
 	for (eventNode in nodeService.getChildren(child.getNodeUri(), null)) {
 		if ( behaviorRegistry.belongsToCategory(ArduinoNodeConstants.TYPE_CATEGORY_EVENT, eventNode, null, true, null) ) {
 			def eventName = eventNode.getPropertyValue(PROPERTY_NAME);
-		
 %>
-void ${utils.getEventHandlerFunctionName(childName, eventName)}(${utils.getEventHandlerParamListAsString(eventNode)}) {
+void ${utils.getEventHandlerFunctionName(childName, eventName)}(${utils.getEventHandlerParamListAsString(eventNode)}) { 
+<%
+	def generatedCode = blocklyToCppConverter.convert(eventNode);
+	if (generatedCode != null) {
+		//Print out the code, but with an indentation of 1 tab.
+		out.print(generatedCode.toString(1));
+	}
+%>
 }
 <%
 
